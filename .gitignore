@@ -1,0 +1,39 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+tr_venv/
+.tr_venv/
+.venv/
+
+# Environment variables
+.env
+*.env
+
+# Data files (if you don’t want to commit saved user data)
+data.json.migrated
+items.db
+
+# IDE / editor files
+.vscode/
+.idea/
+*.swp
+
+# macOS / Windows system files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# PyInstaller
+*.spec
+build/
+dist/
+
+# local scripts
+migrate_json_to_db.py
