@@ -245,8 +245,8 @@ def main():
 )
 
 
-    app.add_handler(conv_handler)
     app.add_handler(CommandHandler("help", cmd_help))
+    app.add_handler(conv_handler)
     app.run_polling()
 
 if __name__ == "__main__":
