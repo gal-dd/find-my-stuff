@@ -7,6 +7,8 @@ from .. import db
 from .common import show_menu, get_user_id
 
 async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    print(update.effective_user.id)
+
     query = update.callback_query
     await query.answer()
 

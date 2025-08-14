@@ -16,7 +16,7 @@ DATA_DIR.mkdir(parents=True, exist_ok=True)
 DB_PATH = str(DATA_DIR / "items.db")
 
 # Feature flags
-MULTI_USER = False  # set True later to switch to per-user storage
+MULTI_USER = True  # set True later to switch to per-user storage
 
 # UX
 MENU_DELAY_SEC = 1

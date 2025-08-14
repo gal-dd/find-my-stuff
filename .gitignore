@@ -16,7 +16,7 @@ tr_venv/
 
 # Data files (if you don’t want to commit saved user data)
 data.json.migrated
-items.db
+data/items.db
 
 # IDE / editor files
 .vscode/
@@ -36,4 +36,4 @@ build/
 dist/
 
 # local scripts
-migrate_json_to_db.py
+scripts/
