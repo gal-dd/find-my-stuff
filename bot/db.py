@@ -1,8 +1,7 @@
 # db.py
 import sqlite3
 from contextlib import closing
-
-DB_PATH = "items.db"
+from .config import DB_PATH
 
 def get_conn():
     # Single-process bot: this is fine.
@@ -21,6 +20,7 @@ def init_db():
             UNIQUE(user_id, item)
         )
         """)
+        cur.execute("CREATE INDEX IF NOT EXISTS idx_items_user ON items(user_id)")
 
 def upsert_item(user_id: str, item: str, location: str):
     with closing(get_conn()) as conn, conn, closing(conn.cursor()) as cur:
