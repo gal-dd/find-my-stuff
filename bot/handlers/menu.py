@@ -56,3 +56,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text("שלח את שם הפריט שברצונך לעדכן:")
         context.user_data["action"] = "update"
         return ITEM_NAME
+
+    else:
+        await query.message.reply_text("פקודה לא קיימת")
+        return None

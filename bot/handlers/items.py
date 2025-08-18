@@ -43,6 +43,12 @@ async def handle_item_name(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await update.message.reply_text(f"'{item_name}' לא נמצא במאגר.")
         return await show_menu(update, context)
 
+    else:
+        log_event(user, "unknown_action")
+        await update.message.reply_text("פקודה לא קיימת")
+        return None
+
+
 async def handle_item_location(update: Update, context: ContextTypes.DEFAULT_TYPE):
     location = (update.message.text or "").strip()
     if not location:
