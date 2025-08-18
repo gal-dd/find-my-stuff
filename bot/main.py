@@ -2,14 +2,17 @@ from telegram.ext import (
     Application, CommandHandler, CallbackQueryHandler,
     MessageHandler, ConversationHandler, filters
 )
-from .config import BOT_TOKEN
+from .config import BOT_TOKEN, BASE_DIR
 from .states import ACTION, ITEM_NAME, ITEM_LOCATION
 from .handlers.common import start, cmd_help, cancel, post_init, on_error
 from .handlers.menu import button_handler
 from .handlers.items import handle_item_name, handle_item_location
 from . import db
+from .logging_config import setup_logging
 
 def build_app():
+    setup_logging(BASE_DIR)
+
     db.init_db()
 
     app = Application.builder().token(BOT_TOKEN).post_init(post_init).build()

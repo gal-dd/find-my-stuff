@@ -1,10 +1,12 @@
 import asyncio
+import logging
 from telegram import Update, BotCommand, MenuButtonCommands
-from telegram.error import BadRequest
 from telegram.ext import ContextTypes
 from ..states import ACTION
 from ..keyboards import main_menu_kb
 from ..config import MENU_DELAY_SEC, MULTI_USER
+
+logger = logging.getLogger("errors")
 
 HELP_TEXT = """
 🤖 *Find My Stuff* – עוזר אישי למציאת חפצים בבית
@@ -61,6 +63,7 @@ async def post_init(app):
 
 async def on_error(update: object, context: ContextTypes.DEFAULT_TYPE) -> None:
     err = context.error
-    if isinstance(err, BadRequest) and "Message is not modified" in str(err):
-        return
-    print(f"[ERROR] {err!r}")
+    try:
+        logger.exception("unhandled_exception err=%r update=%r", err, update)
+    except Exception:
+        logger.exception("unhandled_exception err=%r", err)
