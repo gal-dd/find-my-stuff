@@ -8,7 +8,7 @@ async def handle_item_name(update: Update, context: ContextTypes.DEFAULT_TYPE):
     item_name = (update.message.text or "").strip()
     if not item_name:
         await update.message.reply_text("שם הפריט לא יכול להיות ריק. נסה שוב.")
-        return
+        return None
 
     context.user_data["item_name"] = item_name
     action = context.user_data.get("action")
@@ -53,7 +53,7 @@ async def handle_item_location(update: Update, context: ContextTypes.DEFAULT_TYP
     location = (update.message.text or "").strip()
     if not location:
         await update.message.reply_text("המיקום החדש לא יכול להיות ריק. נסה שוב.")
-        return
+        return None
 
     item_name = context.user_data.get("item_name")
     action = context.user_data.get("action")
